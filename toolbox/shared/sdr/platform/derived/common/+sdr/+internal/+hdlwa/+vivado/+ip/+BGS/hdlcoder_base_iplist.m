@@ -1,0 +1,6 @@
+function [ipList] = hdlcoder_base_iplist(  )
+% All IP modules in the repository folder.
+
+ipList = {...
+    'library/binary_latch_counter_1.0'...
+    };
