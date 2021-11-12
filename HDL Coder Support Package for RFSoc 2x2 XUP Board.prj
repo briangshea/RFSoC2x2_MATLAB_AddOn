@@ -1,13 +1,15 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="603532710" file="/home/brian/Documents/UCSD/capstoneProject/OFDM_SIM_rfsoc/toolbox/HDL Coder Support Package for RFSoc 2x2 XUP Board.prj" location="/home/brian/Documents/UCSD/capstoneProject/OFDM_SIM_rfsoc/toolbox" name="HDL Coder Support Package for RFSoc 2x2 XUP Board" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="367461411" file="/home/brian/projects/RFSoC2x2_MATLAB_AddOn/HDL Coder Support Package for RFSoc 2x2 XUP Board.prj" location="/home/brian/projects/RFSoC2x2_MATLAB_AddOn" name="HDL Coder Support Package for RFSoc 2x2 XUP Board" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>HDL Coder Support Package for RFSoc 2x2 XUP Board</param.appname>
     <param.authnamewatermark>Brian G. Shea</param.authnamewatermark>
     <param.email>bshea@eng.ucsd.edu</param.email>
     <param.company />
     <param.summary>This toolbox adds very basic support to target the RFSoC 2x2 XUP Board from MATLAB Simulink.</param.summary>
-    <param.description>HDL Coder Support Package to target the RFSoC 2x2 (http://www.rfsoc-pynq.io/index.html) Development Board. This toolbox is very basic only allowing access to ADC0. No additional support software is curretly provided, however, it sould be possible to use the PYNQ Image and Python to access the IP Core and data stream. All peripherals from the original base overlay have been removed. They may be added back in in futuer versions.</param.description>
+    <param.description>HDL Coder Support Package to target the RFSoC 2x2 (http://www.rfsoc-pynq.io/index.html) Development Board. This toolbox has been improved to allow access to ACD0 and ADC2. Both RF Tiles are configured to run at the same sample rage of 2.096GSPS. No additional support software is curretly provided, however, it sould be possible to use the PYNQ Image and Python to access the IP Core and data stream. All peripherals from the original base overlay have been removed. They may be added back in in futuer versions.
+
+This package has been tested on Linux Mint 20.1 using Vivado 2020.2 and MATLAB R2020b.</param.description>
     <param.screenshot>${PROJECT_ROOT}/images/01_rfsoc_2x2_t.png</param.screenshot>
-    <param.version>0.1</param.version>
+    <param.version>0.5</param.version>
     <param.output>${PROJECT_ROOT}/HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx</param.output>
     <param.products.name>
       <item>HDL Coder</item>
@@ -89,7 +91,7 @@
     </fileset.depfun.excluded>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx" optional="false">/home/brian/Documents/UCSD/capstoneProject/OFDM_SIM_rfsoc/toolbox/HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx" optional="false">/home/brian/projects/RFSoC2x2_MATLAB_AddOn/HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
@@ -142,7 +144,7 @@
       <vista>false</vista>
       <linux>true</linux>
       <solaris>false</solaris>
-      <osver>5.11.9-b1</osver>
+      <osver>5.12.14-b2</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>glnxa64</arch>
