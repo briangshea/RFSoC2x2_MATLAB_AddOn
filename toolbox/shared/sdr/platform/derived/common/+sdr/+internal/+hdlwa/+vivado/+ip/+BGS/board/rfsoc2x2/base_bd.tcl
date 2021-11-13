@@ -950,20 +950,6 @@ proc create_root_design { parentCell } {
 
 
   # Create interface ports
-  set S00_AXIS_0 [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 S00_AXIS_0 ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {299999939} \
-   CONFIG.HAS_TKEEP {0} \
-   CONFIG.HAS_TLAST {0} \
-   CONFIG.HAS_TREADY {1} \
-   CONFIG.HAS_TSTRB {0} \
-   CONFIG.LAYERED_METADATA {undef} \
-   CONFIG.TDATA_NUM_BYTES {16} \
-   CONFIG.TDEST_WIDTH {0} \
-   CONFIG.TID_WIDTH {0} \
-   CONFIG.TUSER_WIDTH {0} \
-   ] $S00_AXIS_0
-
   set Vp_Vn [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_analog_io_rtl:1.0 Vp_Vn ]
 
   set adc0_clk [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 adc0_clk ]
@@ -993,19 +979,10 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
-  set clk_adc0_0 [ create_bd_port -dir O -type clk clk_adc0_0 ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {256000000} \
- ] $clk_adc0_0
-  set clk_adc2_0 [ create_bd_port -dir O -type clk clk_adc2_0 ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {256000000} \
- ] $clk_adc2_0
   set dp_aux_data_in [ create_bd_port -dir I dp_aux_data_in ]
   set dp_aux_data_oe [ create_bd_port -dir O -from 0 -to 0 dp_aux_data_oe ]
   set dp_aux_data_out [ create_bd_port -dir O dp_aux_data_out ]
   set dp_hot_plug_detect [ create_bd_port -dir I dp_hot_plug_detect ]
-  set irq_0 [ create_bd_port -dir O -type intr irq_0 ]
   set lmk_reset [ create_bd_port -dir O -from 0 -to 0 lmk_reset ]
   set syzygy_vio_en [ create_bd_port -dir O -from 0 -to 0 syzygy_vio_en ]
 
@@ -2638,9 +2615,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net pin_control_gpio_io_o [get_bd_pins pin0_lmk_reset/Din] [get_bd_pins pin1_syzygy_vio_en/Din] [get_bd_pins pin_control/gpio_io_o]
   connect_bd_net -net proc_sys_reset_1_interconnect_aresetn [get_bd_pins axi_clk_conv_0/s_axi_aresetn] [get_bd_pins axi_hpm0_lpd/ARESETN] [get_bd_pins axi_hpm1_fpd/ARESETN] [get_bd_pins proc_sys_reset_0/interconnect_aresetn] [get_bd_pins radio/ARESETN]
   connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins axi_clk_conv_0/m_axi_aresetn] [get_bd_pins ddr4/S00_ARESETN] [get_bd_pins proc_sys_reset_1/peripheral_aresetn] [get_bd_pins radio/m_axis_aresetn]
-  connect_bd_net -net radio_clk_adc0_0 [get_bd_ports clk_adc0_0] [get_bd_pins radio/clk_adc0_0]
-  connect_bd_net -net radio_clk_adc2_0 [get_bd_ports clk_adc2_0] [get_bd_pins radio/clk_adc2_0]
-  connect_bd_net -net radio_irq_0 [get_bd_ports irq_0] [get_bd_pins radio/irq_0]
   connect_bd_net -net rst_ps8_0_99M_peripheral_aresetn [get_bd_pins axi_hpm0_lpd/M00_ARESETN] [get_bd_pins axi_hpm0_lpd/M01_ARESETN] [get_bd_pins axi_hpm0_lpd/M02_ARESETN] [get_bd_pins axi_hpm0_lpd/M03_ARESETN] [get_bd_pins axi_hpm0_lpd/M04_ARESETN] [get_bd_pins axi_hpm0_lpd/M05_ARESETN] [get_bd_pins axi_hpm0_lpd/M06_ARESETN] [get_bd_pins axi_hpm0_lpd/M07_ARESETN] [get_bd_pins axi_hpm0_lpd/M08_ARESETN] [get_bd_pins axi_hpm0_lpd/M09_ARESETN] [get_bd_pins axi_hpm0_lpd/M10_ARESETN] [get_bd_pins axi_hpm0_lpd/S00_ARESETN] [get_bd_pins axi_hpm1_fpd/M00_ARESETN] [get_bd_pins axi_hpm1_fpd/M01_ARESETN] [get_bd_pins axi_hpm1_fpd/M02_ARESETN] [get_bd_pins axi_hpm1_fpd/M03_ARESETN] [get_bd_pins axi_hpm1_fpd/M04_ARESETN] [get_bd_pins axi_hpm1_fpd/S00_ARESETN] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins ddr4/resetn] [get_bd_pins pin_control/s_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins radio/s_axi_aresetn] [get_bd_pins system_management_wiz_0/s_axi_aresetn] [get_bd_pins syzygy_std0/s_axi_aresetn]
   connect_bd_net -net system_management_wiz_0_ip2intc_irpt [get_bd_pins axi_intc_concat/In0] [get_bd_pins system_management_wiz_0/ip2intc_irpt]
   connect_bd_net -net util_vector_logic_0_Res1 [get_bd_ports dp_aux_data_oe] [get_bd_pins dp_aux_data_oe_inv/Res]
