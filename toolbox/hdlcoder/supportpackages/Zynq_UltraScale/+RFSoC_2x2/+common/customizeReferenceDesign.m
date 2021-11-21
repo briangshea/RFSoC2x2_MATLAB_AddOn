@@ -38,6 +38,29 @@ if( strcmpi(config.adc0_enable, 'true') )
             adc0.MasterWidth = 64;
         case '128'
             adc0.MasterWidth = 128;
+        otherwise
+            error("Unsupported Master Bus Width: %s", adc0.MasterWidth);
+    end
+    
+    switch(config.adc0_axis_slave_width)
+        case '8'
+            adc0.SlaveWidth = 8;
+        case '16'
+            adc0.SlaveWidth = 16;
+        case '32'
+            adc0.SlaveWidth = 32;
+        case '64'
+            adc0.SlaveWidth = 64;
+        case '128'
+            adc0.SlaveWidth = 128;
+        otherwise
+            error("Unsupported Slave Bus Width: %s", adc0.SlaveWidth);
+    end
+    
+    if( strcmpi(config.enable_adc_nco, 'true') )
+        adc0.NCOEnabled = true;
+    else
+        adc0.NCOEnabled = false;
     end
 else
     adc0.Enabled = false;
@@ -68,14 +91,39 @@ if( strcmpi(config.adc2_enable, 'true') )
             adc2.MasterWidth = 64;
         case '128'
             adc2.MasterWidth = 128;
+        otherwise
+            error("Unsupported Master Bus Width: %s", adc2.MasterWidth);
+    end
+    
+    switch(config.adc2_axis_slave_width)
+        case '8'
+            adc2.SlaveWidth = 8;
+        case '16'
+            adc2.SlaveWidth = 16;
+        case '32'
+            adc2.SlaveWidth = 32;
+        case '64'
+            adc2.SlaveWidth = 64;
+        case '128'
+            adc2.SlaveWidth = 128;
+        otherwise
+            error("Unsupported Slave Bus Width: %s", adc2.SlaveWidth);
+    end
+    
+    if( strcmpi(config.enable_adc_nco, 'true') )
+        adc2.NCOEnabled = true;
+    else
+        adc2.NCOEnabled = false;
     end
 else
     adc2.Enabled = false;
 end
 
+%% Customize Channels
 RFSoC_2x2.common.ADC.Channel.customize(hRD, 0, adc0);
 RFSoC_2x2.common.ADC.Channel.customize(hRD, 2, adc2);
 
+%{
 if( strcmpi(config.enable_adc_nco, 'true') )
     if(adc0.Enabled)
         % Map RF ADC0 Tile NCO Ports
@@ -170,4 +218,9 @@ if( strcmpi(config.enable_adc_nco, 'true') )
             );
     end
 end
+%}
 
+%% DAC Channel Configuration
+
+%RFSoC_2x2.common.DAC.Channel.customize(hRD, 0, dac0);
+%RFSoC_2x2.common.DAC.Channel.customize(hRD, 2, dac2);

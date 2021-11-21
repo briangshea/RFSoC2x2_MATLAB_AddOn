@@ -24,7 +24,11 @@ hRD = hdlcoder.ReferenceDesign('SynthesisTool', 'Xilinx Vivado');
 
 switch(lower(config.Variant))
     case 'rx'
-        hRD.ReferenceDesignName = 'Receiver';
+        hRD.ReferenceDesignName = 'Receiver Only';
+    case 'rxtx'
+        hRD.ReferenceDesignName = 'Receiver & Transmitter';
+    case 'tx'
+        hRD.ReferenceDesignName = 'Transmitter Only';
     otherwise
         error("Unsupported Board Variant: %s", config.Variant);
 end
@@ -75,7 +79,12 @@ hRD.addParameter(...
     'Choice',        {'false', 'true'}...
     );
 
-% Register Customization Callback for Design
+%% Add DAC Configuration
+%RFSoC_2x2.common.DAC.Channel.addParameters(hRD, 0);
+%RFSoC_2x2.common.DAC.Channel.addParameters(hRD, 2);
+
+
+%% Register Customization Callback for Design
 hRD.CustomizeReferenceDesignFcn = @RFSoC_2x2.common.customizeReferenceDesign;
 
 %% Add interfaces
@@ -95,7 +104,7 @@ hRD.addClockInterface( ...
 % add AXI4 and AXI4-Lite slave interfaces
 hRD.addAXI4SlaveInterface( ...
     'InterfaceConnection',      'axi_clk_conv_0/M_AXI', ...
-    'BaseAddress',              '0x00B0070000', ...
+    'BaseAddress',              '0x00B0200000', ...
     'MasterAddressSpace',       'zynq_ultra_ps_e_0/Data');
 
 hRD.DeviceTreeName = 'devicetree_axilite_iio.dtb';
