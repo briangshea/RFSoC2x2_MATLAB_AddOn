@@ -26,9 +26,9 @@ if { $enable_adc_nco == "false" } {
 
 # Connected Unused AXIS Streams
 if { $adc0_enable == "false" } {
-    connect_bd_intf_net [get_bd_intf_pins radio/M00_AXIS_RE] -boundary_type upper [get_bd_intf_pins radioS00_AXIS_RE]
-    connect_bd_intf_net [get_bd_intf_pins radio/M00_AXIS_IM] -boundary_type upper [get_bd_intf_pins radioS00_AXIS_IM]
-set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH {128}] [get_bd_cells radio/receiver/channel00/packet_generator]
+    connect_bd_intf_net [get_bd_intf_pins radio/M00_AXIS_ADC_RE] -boundary_type upper [get_bd_intf_pins radio/S00_AXIS_ADC_RE]
+    connect_bd_intf_net [get_bd_intf_pins radio/M00_AXIS_ADC_IM] -boundary_type upper [get_bd_intf_pins radio/S00_AXIS_ADC_IM]
+set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH {128}] [get_bd_cells radio/receiver/channel_00/packet_generator]
 } else {
     switch $adc0_axis_master_width {
         8 {
@@ -46,13 +46,13 @@ set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH {128}] [get_bd_cells radio/r
         }
     }
         
-    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH $axis_m_width] [get_bd_cells radio/receiver/channel00/packet_generator]
+    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH $axis_m_width] [get_bd_cells radio/receiver/channel_00/packet_generator]
 }
 
 if { $adc2_enable == "false" } {
-    connect_bd_intf_net [get_bd_intf_pins radio/M20_AXIS_RE] -boundary_type upper [get_bd_intf_pins radio/S20_AXIS_RE]
-    connect_bd_intf_net [get_bd_intf_pins radio/M20_AXIS_IM] -boundary_type upper [get_bd_intf_pins radio/S20_AXIS_IM]
-    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH {128}] [get_bd_cells radio/receiver/channel20/packet_generator]
+    connect_bd_intf_net [get_bd_intf_pins radio/M20_AXIS_ADC_RE] -boundary_type upper [get_bd_intf_pins radio/S20_AXIS_ADC_RE]
+    connect_bd_intf_net [get_bd_intf_pins radio/M20_AXIS_ADC_IM] -boundary_type upper [get_bd_intf_pins radio/S20_AXIS_ADC_IM]
+    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH {128}] [get_bd_cells radio/receiver/channel_20/packet_generator]
 } else {
     switch $adc2_axis_master_width {
         8 {
@@ -69,7 +69,7 @@ if { $adc2_enable == "false" } {
         set axis_m_width 128
         }
     }
-    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH $axis_m_width] [get_bd_cells radio/receiver/channel20/packet_generator]
+    set_property -dict [list CONFIG.C_S_AXIS_DATA_WIDTH $axis_m_width] [get_bd_cells radio/receiver/channel_20/packet_generator]
 }
 
 #source $mw_hdl_dir/projects/ad9361/common/mw_cleanup_bd_gpio.tcl
