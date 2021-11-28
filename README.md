@@ -4,21 +4,27 @@ MATLAB Addon to target the RFSoC 2x2 from MATLAB Simulink
 # RFSoC 2x2
 Documentation for the RFSoC 2x2 can be found here [RFSoC 2x2](http://www.rfsoc-pynq.io/index.html)
 
-# Initial Release
-- ADC Tile 224 ADC0 and ADC Tile 226 ADC0 are now both supported.
-- Simulink IP Core runs at 256MHz
-- DIP Switches Avialable
-- Push Button Switches Avialable
-- PMOD0 and PMOD1 Avialable (Removed)
-- SYZYGY Port Avialable
-- Restored the Same Heirarchy as the RFSoC2x2 so that default Pynq Image should work (not tested ble
-
+# v0.6.0 Release
+- ADC Tile 224 ADC0 and ADC Tile 226 ADC0 are supported.
+- DAC Tile 228 and 229 are supported.
+- Simulink IP Core runs at 300MHz.
+- DIP Switches avialable to MATLAB IP Core
+- Push Button Switches avialable to MATLAB IP Core
+- LEDs avialable to MATLAB IP Core
+- RGBLEDs avialable to MATLAB IP Core
+- PMOD0 and PMOD1 avialable to MATLAB IP Core
+- SYZYGY Port avialable via GPIO Controller
+- Tested ADC and DAC Channels using PYNQ Notebook.
+- Added Python Code to control base overlay
+  - DAC Source must be configured manually via Python to select MATLAB as DAC Data Source
+  - DAC AXI Stream Switch is initially disabled or not configured.
 
 # Next Steps
-- Add Real-time interface to ADC0 NCO Frequency & Phase ports
-  - Ports have been added, Configuration parameters placed, however, updates are still needed to get fully functional. 
-  - Will be addressed in future version.
-- Work on Drivers for Pynq System to access Data Streams (May not be required with new heirarchy)
+- Fix AXI4-Stream Switch manual configuration
+- Verify DMA I/Q Stream to MATLAB IP
+- Add Real-time monitor ports for ADC and DAC
+- Create Variant that has PMODs controlled via microblaze processors to easy the use of PMODs
+- Create Block diagram for Dataflow and better documentation
 
 # How to Install
 
