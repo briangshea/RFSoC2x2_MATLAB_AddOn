@@ -1,18 +1,19 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="367461411" file="/home/brian/projects/RFSoC2x2_MATLAB_AddOn/HDL Coder Support Package for RFSoc 2x2 XUP Board.prj" location="/home/brian/projects/RFSoC2x2_MATLAB_AddOn" name="HDL Coder Support Package for RFSoc 2x2 XUP Board" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="110956909" file="/home/brian/projects/RFSoC2x2_MATLAB_AddOn/HDL Coder Support Package for RFSoc 2x2 XUP Board.prj" location="/home/brian/projects/RFSoC2x2_MATLAB_AddOn" name="HDL Coder Support Package for RFSoc 2x2 XUP Board" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>HDL Coder Support Package for RFSoc 2x2 XUP Board</param.appname>
     <param.authnamewatermark>Brian G. Shea</param.authnamewatermark>
     <param.email>bshea@eng.ucsd.edu</param.email>
     <param.company />
-    <param.summary>This toolbox adds very basic support to target the RFSoC 2x2 XUP Board from MATLAB Simulink.</param.summary>
+    <param.summary>This toolbox adds support to target the RFSoC 2x2 XUP Board from MATLAB Simulink.</param.summary>
     <param.description>HDL Coder Support Package to target the RFSoC 2x2 (http://www.rfsoc-pynq.io/index.html) Development Board. This toolbox has been improved to allow access to ACD0 and ADC2. Both RF Tiles are configured to run at the same sample rage of 2.096GSPS. No additional support software is curretly provided, however, it sould be possible to use the PYNQ Image and Python to access the IP Core and data stream. All peripherals from the original base overlay have been removed. They may be added back in in futuer versions.
 
 This package has been tested on Linux Mint 20.1 using Vivado 2020.2 and MATLAB R2020b.
 
 Change Log:
-v0.5.1 - Removed extraneous ports from external interfaces.</param.description>
+v0.5.1 - Removed extraneous ports from external interfaces.
+v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
     <param.screenshot>${PROJECT_ROOT}/images/01_rfsoc_2x2_t.png</param.screenshot>
-    <param.version>0.5.1</param.version>
+    <param.version>0.6.0</param.version>
     <param.output>${PROJECT_ROOT}/HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx</param.output>
     <param.products.name>
       <item>HDL Coder</item>
@@ -40,7 +41,7 @@ v0.5.1 - Removed extraneous ports from external interfaces.</param.description>
     <param.matlab.project.id />
     <param.matlab.project.name />
     <param.release.start>R2020b</param.release.start>
-    <param.release.end>latest</param.release.end>
+    <param.release.end>R2020b</param.release.end>
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
     <param.compatiblity.macos>false</param.compatiblity.macos>
