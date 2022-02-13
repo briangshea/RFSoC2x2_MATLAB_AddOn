@@ -1,9 +1,12 @@
 function hRD = plugin_rd(varargin)
 % Reference design definition
 % Copyright Brian G. Shea (bshea@eng.ucsd.edu)
+% REQUIRES: Communications Toolbox Support Package for Xilinx Zynq-Based Radio
+
+toolVersion = '2020.2';
 
 p = inputParser;
-p.addParameter('Board', 'RFSoC 2x2');
+p.addParameter('Board',   'RFSoC 2x2');
 p.addParameter('Project', 'RFSoC_2x2');
 p.addParameter('Variant', 'rx');
 
@@ -24,29 +27,31 @@ hRD = hdlcoder.ReferenceDesign('SynthesisTool', 'Xilinx Vivado');
 
 switch(lower(config.Variant))
     case 'rx'
-        hRD.ReferenceDesignName = 'Receiver Only';
+        hRD.ReferenceDesignName = ['Receiver Only (Vivado ' toolVersion ')'];
     case 'rxtx'
-        hRD.ReferenceDesignName = 'Receiver & Transmitter';
+        hRD.ReferenceDesignName = ['Receiver & Transmitter (Vivado ' toolVersion ')'];
     case 'tx'
-        hRD.ReferenceDesignName = 'Transmitter Only';
+        hRD.ReferenceDesignName = ['Transmitter Only (Vivado ' toolVersion ')'];
     otherwise
         error("Unsupported Board Variant: %s", config.Variant);
 end
 
+% Tool information
+hRD.SupportedToolVersion = {toolVersion};
+
 hRD.BoardName = boardName;
 
-sharedFolder = fileparts(which('sdr.internal.hdlwa.vivado.ip.BGS.hdlcoder_base_iplist'));
+base_iplist = ['sdr.internal.hdlwa.vivado.v' replace(toolVersion, '.', '_') '.ip.BGS.hdlcoder_base_iplist'];
+sharedFolder = fileparts(which(base_iplist));
 
 % Shared Design Files
 hRD.SharedRD = true;
 hRD.SharedRDFolder = sharedFolder;
 
-% Tool information
-hRD.SupportedToolVersion = {'2020.1'};
 
 % Add IP Repository
 hRD.addIPRepository(...
-    'IPListFunction',  'sdr.internal.hdlwa.vivado.ip.BGS.hdlcoder_base_iplist',...
+    'IPListFunction',  base_iplist,...
     'NotExistMessage', 'IP repository not found');
 
 %% Add custom design files

@@ -62,6 +62,12 @@ if( strcmpi(config.adc0_enable, 'true') )
     else
         adc0.NCOEnabled = false;
     end
+
+    if( strcmpi(config.enable_adc_rts, 'true') )
+        adc0.RTSEnabled = true;
+    else
+        adc0.RTSEnabled = false;
+    end
 else
     adc0.Enabled = false;
 end
@@ -114,6 +120,12 @@ if( strcmpi(config.adc2_enable, 'true') )
         adc2.NCOEnabled = true;
     else
         adc2.NCOEnabled = false;
+    end
+
+    if( strcmpi(config.enable_adc_rts, 'true') )
+        adc2.RTSEnabled = true;
+    else
+        adc2.RTSEnabled = false;
     end
 else
     adc2.Enabled = false;
@@ -173,6 +185,12 @@ if( strcmpi(config.dac0_enable, 'true') )
     else
         dac0.NCOEnabled = false;
     end
+
+    if( strcmpi(config.enable_dac_rts, 'true') )
+        dac0.RTSEnabled = true;
+    else
+        dac0.RTSEnabled = false;
+    end
 else
     dac0.Enabled = false;
 end
@@ -225,6 +243,12 @@ if( strcmpi(config.dac1_enable, 'true') )
         dac1.NCOEnabled = true;
     else
         dac1.NCOEnabled = false;
+    end
+
+    if( strcmpi(config.enable_dac_rts, 'true') )
+        dac1.RTSEnabled = true;
+    else
+        dac1.RTSEnabled = false;
     end
 else
     dac1.Enabled = false;

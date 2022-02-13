@@ -29,3 +29,9 @@ Documentation for the RFSoC 2x2 can be found here [RFSoC 2x2](http://www.rfsoc-p
 # How to Install
 
 Download [HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx](https://github.com/briangshea/RFSoC2x2_MATLAB_AddOn/blob/main/HDL%20Coder%20Support%20Package%20for%20RFSoc%202x2%20XUP%20Board.mltbx) and open in MATLAB to install this toolbox.
+
+Using Vivado 2020.2 or 2021.2 run the following TCL commands to install board files
+```
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::install [xhub::get_xitems xilinx.com:xilinx_board_store:rfsoc2x2:1.1]
+```
