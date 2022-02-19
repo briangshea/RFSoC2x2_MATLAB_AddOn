@@ -27,5 +27,8 @@ FXPT_DT    = 0;  % fixed point data type
 HDL_OPT_DT = 1;  % fixed point data type (reduced bit widths for HDL)
 DBL_DT     = 2;  % double data type
 
-
+%%
+%% Open passthru_hdl.slx
+%%
+open(SL_FNAME)
 
