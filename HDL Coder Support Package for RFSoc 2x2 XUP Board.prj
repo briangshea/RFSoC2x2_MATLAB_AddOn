@@ -3,7 +3,7 @@
     <param.appname>HDL Coder Support Package for RFSoc 2x2 XUP Board</param.appname>
     <param.authnamewatermark>Brian G. Shea</param.authnamewatermark>
     <param.email>bshea@eng.ucsd.edu</param.email>
-    <param.company />
+    <param.company>Brian G. Shea</param.company>
     <param.summary>This toolbox adds support to target the RFSoC 2x2 XUP Board from MATLAB Simulink.</param.summary>
     <param.description>HDL Coder Support Package to target the RFSoC 2x2 (http://www.rfsoc-pynq.io/index.html) Development Board. This toolbox has been improved to allow access to ACD0 and ADC2. Both RF Tiles are configured to run at the same sample rage of 2.096GSPS. No additional support software is curretly provided, however, it sould be possible to use the PYNQ Image and Python to access the IP Core and data stream. All peripherals from the original base overlay have been removed. They may be added back in in futuer versions.
 
@@ -11,37 +11,50 @@ This package has been tested on Linux Mint 20.1 using Vivado 2020.2 and MATLAB R
 
 Change Log:
 v0.5.1 - Removed extraneous ports from external interfaces.
-v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
+v0.6.0 - Added DAC Channel Support and Real-time NCO Control
+v1.0.0 - Full ADC and DAC channel support with Real-time NCO and Threshold interface from RF-Tiles</param.description>
     <param.screenshot>${PROJECT_ROOT}/images/01_rfsoc_2x2_t.png</param.screenshot>
-    <param.version>0.6.0</param.version>
+    <param.version>0.8.0</param.version>
     <param.output>${PROJECT_ROOT}/HDL Coder Support Package for RFSoc 2x2 XUP Board.mltbx</param.output>
     <param.products.name>
+      <item>Embedded Coder</item>
       <item>HDL Coder</item>
     </param.products.name>
     <param.products.id>
+      <item>65</item>
       <item>101</item>
     </param.products.id>
     <param.products.version>
-      <item>3.17</item>
+      <item>7.7</item>
+      <item>3.19</item>
     </param.products.version>
     <param.platforms />
     <param.guid>7e953c9f-4296-4efa-b0b3-99c45e98ddcc</param.guid>
     <param.exclude.filters />
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
-    <param.examples />
+    <param.examples>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;examples&gt;
+   &lt;exampleCategory name="01_passthru_example"&gt;
+      &lt;example name="passthru_setup" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/01_passthru_example/html/passthru_setup.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/01_passthru_example/passthru_setup.m&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+   &lt;/exampleCategory&gt;
+&lt;/examples&gt;</param.examples>
     <param.demosxml />
     <param.apps />
     <param.registered.apps />
     <param.docs />
-    <param.getting.started.guide />
+    <param.getting.started.guide>${PROJECT_ROOT}/toolbox/doc/GettingStarted.mlx</param.getting.started.guide>
     <param.matlabpath.excludes />
     <param.javaclasspath.excludes />
-    <param.exported.on.package>false</param.exported.on.package>
+    <param.exported.on.package>true</param.exported.on.package>
     <param.required.addons />
     <param.matlab.project.id />
     <param.matlab.project.name />
     <param.release.start>R2020b</param.release.start>
-    <param.release.end>R2020b</param.release.end>
+    <param.release.end>R2021b</param.release.end>
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
     <param.compatiblity.macos>false</param.compatiblity.macos>
@@ -54,22 +67,16 @@ v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
     <param.additional.sw.mac.url />
     <param.additional.sw.linux.url />
     <unset>
-      <param.authnamewatermark />
-      <param.email />
-      <param.company />
       <param.output />
       <param.platforms />
       <param.exclude.filters />
       <param.exclude.pcodedmfiles />
-      <param.examples />
       <param.demosxml />
       <param.apps />
       <param.registered.apps />
       <param.docs />
-      <param.getting.started.guide />
       <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
-      <param.exported.on.package />
       <param.required.addons />
       <param.matlab.project.id />
       <param.matlab.project.name />
@@ -86,7 +93,12 @@ v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
       <file>${PROJECT_ROOT}/toolbox</file>
     </fileset.rootdir>
     <fileset.rootfiles>
+      <file>${PROJECT_ROOT}/toolbox/+toolbox</file>
+      <file>${PROJECT_ROOT}/toolbox/demos.xml</file>
+      <file>${PROJECT_ROOT}/toolbox/doc</file>
+      <file>${PROJECT_ROOT}/toolbox/examples</file>
       <file>${PROJECT_ROOT}/toolbox/hdlcoder</file>
+      <file>${PROJECT_ROOT}/toolbox/pynq</file>
       <file>${PROJECT_ROOT}/toolbox/shared</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
@@ -99,14 +111,13 @@ v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/tools/matlab/R2020b</root>
+      <root>/tools/matlab/R2021b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
         <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
         <toolbox name="matlabhdlcoder" />
-        <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
@@ -133,11 +144,6 @@ v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
           <enabled>true</enabled>
         </matlabhdlcoder>
       </toolbox>
-      <toolbox>
-        <neuralnetwork>
-          <enabled>true</enabled>
-        </neuralnetwork>
-      </toolbox>
     </matlab>
     <platform>
       <unix>true</unix>
@@ -148,7 +154,7 @@ v0.6.0 - Added DAC Channel Support and Real-time NCO Control</param.description>
       <vista>false</vista>
       <linux>true</linux>
       <solaris>false</solaris>
-      <osver>5.12.14-b2</osver>
+      <osver>5.15.11-b1</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>glnxa64</arch>
